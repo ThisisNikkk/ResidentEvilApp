@@ -48,15 +48,15 @@ Whether you're re-experiencing the horror or discovering it for the first time, 
 
 > *Preview Coming Soon* – UI, Maps, Character Cards, and Chapter Pages will be showcased here.
 
-![App Screenshot Placeholder](https://via.placeholder.com/900x400?text=Resident+Evil+4+Remake+Companion+App+Preview)
+![App Screenshot Placeholder](./assets/img/ui.png)
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Frontend:** React Native (Expo) or React.js (Web)
-- **Backend:** Firebase / Supabase *(Optional for dynamic content)*
-- **Database:** Firestore / SQLite *(optional features)*
+- **Backend:** Firebase 
+- **Database:** Firestore 
 - **Design:** Figma / Adobe XD
 - **Deployment:** Vercel / Netlify / Play Store *(TBD)*
 
