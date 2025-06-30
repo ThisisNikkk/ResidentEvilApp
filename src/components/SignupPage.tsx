@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   Image,
@@ -18,22 +18,24 @@ import { useNavigation } from '@react-navigation/native';
 
 const SignupPage = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const image = require('../../assets/img/w2.jpg'); // Adjust the path as necessary
+  const image = require('../../assets/img/w2.jpg');
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
   const navigation = useNavigation();
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ImageBackground
-          source={image}
-          resizeMode="cover"
-          style={styles.container}
-        >
+    <View style={styles.container}>
+      {/* Fixed background image */}
+      <ImageBackground
+        source={image}
+        resizeMode="cover"
+        style={styles.backgroundImage}
+      />
+
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.contentContainer}>
             <Image source={require("../../assets/img/logo2.png")} style={styles.logo} />
             <Text style={styles.title}>
@@ -58,8 +60,11 @@ const SignupPage = () => {
                 secureTextEntry
                 style={styles.input}
               />
-              <View style={{ flexDirection: "row", justifyContent: "space-around",marginHorizontal:10, marginTop: 10 }}>
-                <Pressable style={styles.loginButton} onPress={()=> navigation.navigate('LoginPage')}>
+              <View style={styles.buttonContainer}>
+                <Pressable
+                  style={styles.loginButton}
+                  onPress={() => navigation.navigate('LoginPage')}
+                >
                   <Text style={styles.loginButtonText}>Create Account</Text>
                 </Pressable>
               </View>
@@ -72,35 +77,44 @@ const SignupPage = () => {
               <Text style={styles.copyrightText}>All Rights Reserved.</Text>
             </View>
           </View>
-        </ImageBackground>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: 'relative',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   contentContainer: {
     flex: 1,
     justifyContent: "center",
     paddingHorizontal: 20,
+    backgroundColor: 'transparent',
   },
   logo: {
     width: "100%",
     maxWidth: 450,
-    height: 250,
+    height: 280,
     resizeMode: "contain",
     alignSelf: "center",
   },
   title: {
     color: "white",
     textAlign: "center",
-    marginVertical: 35,
+    marginVertical: 25,
   },
   titleBold: {
-    fontSize: 25,
+    fontSize: 24,
     fontFamily: "Montserrat-Bold",
   },
   titleNormal: {
@@ -117,6 +131,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgba(255, 255, 255, 0.1)",
   },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginHorizontal: 10,
+  },
   input: {
     height: 50,
     marginVertical: 10,
@@ -125,16 +144,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     color: "white",
     fontFamily: "Montserrat-Regular",
-  },
-  signupButton:{
-      marginTop: 10,
-      paddingVertical: 12,
-      paddingHorizontal: 40,
-      borderRadius: 30,
-      alignSelf: "center",
-      backgroundColor: "rgba(255, 255, 255, 0.6)",
-      borderWidth: 1,
-      borderColor: "rgba(255, 0, 0, 0.1)",
   },
   loginButton: {
     marginTop: 10,
@@ -151,11 +160,6 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat-Bold",
     textAlign: "center",
   },
-  signupButtonText: {
-    color: "black",
-    fontFamily: "Montserrat-Bold",
-    textAlign: "center",
-  },
   copyrightContainer: {
     marginTop: 20,
     alignItems: "center",
@@ -165,25 +169,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: "Montserrat-SemiBold",
     textAlign: "center",
-  },
-  modalOverlay: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(255,255,255,0.7)",
-  },
-  modalContent: {
-    width: 250,
-    padding: 20,
-    borderRadius: 20,
-    alignItems: "center",
-    backgroundColor: "red",
-    elevation: 10,
-  },
-  modalText: {
-    fontSize: 20,
-    fontFamily: "Montserrat-Bold",
-    color: "white",
   },
 });
 

@@ -17,10 +17,9 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
-
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
-  const image = require('../../assets/img/w2.jpg'); // Adjust the path as necessary
+  const image = require('../../assets/img/w2.jpg');
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleLoginPress = () => {
@@ -29,26 +28,41 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
-      return () => {
-        if (timerRef.current) {
-          clearTimeout(timerRef.current);
-        }
-      };
-    }, []);
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ImageBackground
-          source={image}
-          resizeMode="cover"
-          style={styles.container}
-        >
+    <View style={styles.container}>
+      {/* Fixed background image */}
+      <ImageBackground
+        source={image}
+        resizeMode="cover"
+        style={styles.backgroundImage}
+      />
+
+      <Modal animationType="slide" visible={modalVisible}>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>Welcome Gamer!!</Text>
+          </View>
+        </View>
+      </Modal>
+
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : -100}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.contentContainer}>
-            <Image source={require("../../assets/img/logo2.png")} style={styles.logo} />
+            <Image
+              source={require("../../assets/img/logo2.png")}
+              style={styles.logo}
+            />
             <Text style={styles.title}>
               <Text style={styles.titleBold}>One Mission, One Chance: </Text>
               <Text style={styles.titleNormal}>Don't Look Back</Text>
@@ -66,11 +80,17 @@ const LoginPage = () => {
                 secureTextEntry
                 style={styles.input}
               />
-              <View style={{ flexDirection: "row", justifyContent: "space-around",marginHorizontal:10, marginTop: 10 }}>
-                <Pressable style={styles.signupButton} onPress={()=> navigation.navigate('SignupPage')}>
+              <View style={styles.buttonContainer}>
+                <Pressable
+                  style={styles.signupButton}
+                  onPress={() => navigation.navigate('SignupPage')}
+                >
                   <Text style={styles.signupButtonText}>Signup</Text>
                 </Pressable>
-                <Pressable style={styles.loginButton} onPress={handleLoginPress}>
+                <Pressable
+                  style={styles.loginButton}
+                  onPress={handleLoginPress}
+                >
                   <Text style={styles.loginButtonText}>Login</Text>
                 </Pressable>
               </View>
@@ -83,77 +103,91 @@ const LoginPage = () => {
               <Text style={styles.copyrightText}>All Rights Reserved.</Text>
             </View>
           </View>
-
-          <Modal animationType="slide" transparent visible={modalVisible}>
-            <View style={styles.modalOverlay}>
-              <View style={styles.modalContent}>
-                <Text style={styles.modalText}>Welcome Gamer!!</Text>
-              </View>
-            </View>
-          </Modal>
-        </ImageBackground>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  contentContainer: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 20,
-  },
-  logo: {
-    width: "100%",
-    maxWidth: 450,
-    height: 250,
-    resizeMode: "contain",
-    alignSelf: "center",
-  },
-  title: {
-    color: "white",
-    textAlign: "center",
-    marginVertical: 35,
-  },
-  titleBold: {
-    fontSize: 25,
-    fontFamily: "Montserrat-Bold",
-  },
-  titleNormal: {
-    fontSize: 20,
-    fontFamily: "Montserrat-Regular",
-  },
-  loginContainer: {
-    width: "100%",
-    maxWidth: 400,
-    padding: 20,
-    borderRadius: 20,
-    alignSelf: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.1)",
-  },
-  input: {
-    height: 50,
-    marginVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 20,
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    color: "white",
-    fontFamily: "Montserrat-Regular",
-  },
-  signupButton:{
-      marginTop: 10,
-      paddingVertical: 12,
-      paddingHorizontal: 40,
-      borderRadius: 30,
+      flex: 1,
+      position: 'relative',
+    },
+    backgroundImage: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    },
+    contentContainer: {
+      flex: 1,
+      justifyContent: "center",
+      paddingHorizontal: 20,
+      backgroundColor: 'transparent',
+    },
+    logo: {
+      width: "100%",
+      maxWidth: 450,
+      height: 280,
+      resizeMode: "contain",
       alignSelf: "center",
-      backgroundColor: "rgba(255, 255, 255, 0.6)",
+    },
+    title: {
+      color: "white",
+      textAlign: "center",
+      marginVertical: 20,
+    },
+    titleBold: {
+      fontSize: 24,
+      fontFamily: "Montserrat-Bold",
+    },
+    titleNormal: {
+      fontSize: 20,
+      fontFamily: "Montserrat-Regular",
+    },
+    titleBold: {
+      fontSize: 24,
+      fontFamily: "Montserrat-Bold",
+    },
+    titleNormal: {
+      fontSize: 20,
+      fontFamily: "Montserrat-Regular",
+    },
+    loginContainer: {
+      width: "100%",
+      maxWidth: 400,
+      padding: 20,
+      borderRadius: 20,
+      alignSelf: "center",
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
       borderWidth: 1,
-      borderColor: "rgba(255, 0, 0, 0.1)",
+      borderColor: "rgba(255, 255, 255, 0.1)",
+    },
+    buttonContainer: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      marginHorizontal: 10,
+    },
+    input: {
+      height: 50,
+      marginVertical: 10,
+      paddingHorizontal: 15,
+      borderRadius: 20,
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      color: "white",
+      fontFamily: "Montserrat-Regular",
+    },
+  signupButton: {
+    marginTop: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 40,
+    borderRadius: 30,
+    alignSelf: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
+    borderWidth: 1,
+    borderColor: "rgba(255, 0, 0, 0.1)",
   },
   loginButton: {
     marginTop: 10,
@@ -176,7 +210,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   copyrightContainer: {
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: Platform.OS === "android" ? 10 : 20,
     alignItems: "center",
   },
   copyrightText: {
