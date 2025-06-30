@@ -48,8 +48,8 @@ Whether you're re-experiencing the horror or discovering it for the first time, 
 
 > *Preview Coming Soon* – UI, Maps, Character Cards, and Chapter Pages will be showcased here.
 
-<img src="./assets/img/login.png" alt="Login Page" style="object-fit:contain; width:400px; height:300px;" />
-<img src="./assets/img/signup.png" alt="Signup Page" style="object-fit:contain; width:400px; height:300px;" />
+<img src="./assets/img/login.png" alt="Login Page" style="max-width:400px; height:auto; object-fit:contain;" />
+<img src="./assets/img/signup.png" alt="Signup Page" style="max-width:400px; height:auto; object-fit:contain;" />
 ---
 
 ## 🛠️ Tech Stack
