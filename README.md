@@ -48,7 +48,8 @@ Whether you're re-experiencing the horror or discovering it for the first time, 
 
 > *Preview Coming Soon* – UI, Maps, Character Cards, and Chapter Pages will be showcased here.
 
-![App Screenshot Placeholder](./assets/img/ui.png)
+<img src="./assets/img/login.png" alt="Login Page" width="400" height="300" />
+<img src="./assets/img/signup.png" alt="Signup Page" width="400" height="300" />
 
 ---
 

@@ -24,7 +24,7 @@ const LoginPage = () => {
 
   const handleLoginPress = () => {
     setModalVisible(true);
-    timerRef.current = setTimeout(() => setModalVisible(false), 1500);
+    timerRef.current = setTimeout(() => setModalVisible(false), 2000);
   };
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const LoginPage = () => {
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : -100}
+
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.contentContainer}>
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   copyrightContainer: {
-    marginTop: 10,
+    marginVertical: 25,
     marginBottom: Platform.OS === "android" ? 10 : 20,
     alignItems: "center",
   },
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(255,255,255,0.7)",
+    backgroundColor: "rgba(0,0,0,1)",
   },
   modalContent: {
     width: 250,
