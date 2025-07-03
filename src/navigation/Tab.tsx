@@ -38,13 +38,13 @@ const Tabs = () => {
                 source={require('../../assets/img/home.png')}
                 style={[
                   styles.tabIcon,
-                  { tintColor: focused ? '#e32f45' : '#ffffff' }
+                  { tintColor: focused ? 'red' : '#000' }
                 ]}
               />
               <Text style={[
                 styles.tabText,
                 { 
-                  color: focused ? '#e32f45' : '#ffffff',
+                  color: focused ? 'red' : '#000',
                   textShadowColor: 'rgba(0, 0, 0, 0.3)',
                   textShadowOffset: { width: 0, height: 1 },
                   textShadowRadius: 2
@@ -65,13 +65,13 @@ const Tabs = () => {
                 source={require('../../assets/img/character.png')}
                 style={[
                   styles.tabIcon,
-                  { tintColor: focused ? '#e32f45' : '#ffffff' }
+                  { tintColor: focused ? 'red' : '#000' }
                 ]}
               />
               <Text style={[
                 styles.tabText,
                 { 
-                  color: focused ? '#e32f45' : '#ffffff',
+                  color: focused ? 'red' : '#000',
                   textShadowColor: 'rgba(0, 0, 0, 0.3)',
                   textShadowOffset: { width: 0, height: 1 },
                   textShadowRadius: 2
@@ -92,13 +92,13 @@ const Tabs = () => {
                 source={require('../../assets/img/blog.png')}
                 style={[
                   styles.tabIcon,
-                  { tintColor: focused ? '#e32f45' : '#ffffff' }
+                  { tintColor: focused ? 'red' : '#000' }
                 ]}
               />
               <Text style={[
                 styles.tabText,
                 { 
-                  color: focused ? '#e32f45' : '#ffffff',
+                  color: focused ? 'red' : '#000',
                   textShadowColor: 'rgba(0, 0, 0, 0.3)',
                   textShadowOffset: { width: 0, height: 1 },
                   textShadowRadius: 2
@@ -119,13 +119,13 @@ const Tabs = () => {
                 source={require('../../assets/img/profile.png')}
                 style={[
                   styles.tabIcon,
-                  { tintColor: focused ? '#e32f45' : '#ffffff' }
+                  { tintColor: focused ? 'red' : '#000' }
                 ]}
               />
               <Text style={[
                 styles.tabText,
                 { 
-                  color: focused ? '#e32f45' : '#ffffff',
+                  color: focused ? 'red' : '#000',
                   textShadowColor: 'rgba(0, 0, 0, 0.3)',
                   textShadowOffset: { width: 0, height: 1 },
                   textShadowRadius: 2
@@ -144,10 +144,10 @@ const Tabs = () => {
 const styles = StyleSheet.create({
   glassShadow: {
     elevation: 5,
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(255, 255, 255, 1)',
   },
   tabItem: {
-    marginTop: 38,
+    marginTop: 40,
     width: 100,
     alignItems: 'center',
     justifyContent: 'center',
