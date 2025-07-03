@@ -24,7 +24,10 @@ const LoginPage = () => {
 
   const handleLoginPress = () => {
     setModalVisible(true);
-    timerRef.current = setTimeout(() => setModalVisible(false), 2000);
+    timerRef.current = setTimeout(() => { 
+      setModalVisible(false);
+      navigation.navigate('Tabs');
+    }, 2000);
   };
 
   useEffect(() => {
@@ -116,6 +119,7 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
       position: 'absolute',
+      flex:1,
       top: 0,
       left: 0,
       right: 0,
@@ -130,7 +134,7 @@ const styles = StyleSheet.create({
     logo: {
       width: "100%",
       maxWidth: 450,
-      height: 280,
+      height: 240,
       resizeMode: "contain",
       alignSelf: "center",
     },
@@ -138,14 +142,6 @@ const styles = StyleSheet.create({
       color: "white",
       textAlign: "center",
       marginVertical: 20,
-    },
-    titleBold: {
-      fontSize: 24,
-      fontFamily: "Montserrat-Bold",
-    },
-    titleNormal: {
-      fontSize: 20,
-      fontFamily: "Montserrat-Regular",
     },
     titleBold: {
       fontSize: 24,

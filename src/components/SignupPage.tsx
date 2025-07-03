@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   logo: {
     width: "100%",
     maxWidth: 450,
-    height: 280,
+    height: 270,
     resizeMode: "contain",
     alignSelf: "center",
   },
